@@ -19,4 +19,10 @@ const knowledgeBaseList = [
       imageUrl:
           'https://www.govtrack.us/static/legislator-photos/412534-200px.jpeg',
       backendAPIUri: 'http://localhost:5002/chat'),
+  KnowledgeBase(
+      id: 4,
+      title: 'Lane Tech',
+      imageUrl:
+          'https://i0.wp.com/lanetech.org/wp-content/uploads/2018/12/facebook-opengraph.jpg?fit=1200%2C630&ssl=1',
+      backendAPIUri: 'http://localhost:5001/chat'),
 ];
