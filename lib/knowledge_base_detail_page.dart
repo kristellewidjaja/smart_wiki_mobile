@@ -116,6 +116,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
 
     final request = Request(
       query: message,
+      category: widget.knowledgeBase.category,
     );
     final response = await http.post(
       Uri.parse(widget.knowledgeBase.backendAPIUri),

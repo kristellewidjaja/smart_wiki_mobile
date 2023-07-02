@@ -1,13 +1,12 @@
 class Request {
   String query;
+  String category;
 
-  Request({
-    required this.query,
-  });
+  Request({required this.query, required this.category});
 
-  Request.fromJson(Map<String, dynamic> json) : query = json['query'];
+  Request.fromJson(Map<String, dynamic> json)
+      : query = json['query'],
+        category = json['category'];
 
-  Map<String, dynamic> toJson() => {
-        'query': query,
-      };
+  Map<String, dynamic> toJson() => {'query': query, 'category': category};
 }
