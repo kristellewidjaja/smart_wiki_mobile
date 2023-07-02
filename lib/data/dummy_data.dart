@@ -20,7 +20,7 @@ const knowledgeBaseList = [
       title: 'Brad Schneider',
       imageUrl:
           'https://www.govtrack.us/static/legislator-photos/412534-200px.jpeg',
-      backendAPIUri: 'http://localhost:5002/chat',
+      backendAPIUri: 'http://localhost:5001/chat',
       category: 'brad_schneider'),
   KnowledgeBase(
       id: 4,
