@@ -37,4 +37,20 @@ const knowledgeBaseList = [
     backendAPIUri: 'http://localhost:5001/chat',
     category: 'jones_college_prep',
   ),
+  KnowledgeBase(
+    id: 6,
+    title: 'Jan Schakowsky',
+    imageUrl:
+        'https://www.govtrack.us/static/legislator-photos/400360-200px.jpeg',
+    backendAPIUri: 'http://localhost:5001/chat',
+    category: 'jan_schakowsky',
+  ),
+  KnowledgeBase(
+    id: 7,
+    title: 'Illinois Representatives',
+    imageUrl:
+        'https://starspangledflags.com/wp-content/uploads/il-stateflag-main.jpg',
+    backendAPIUri: 'http://localhost:5001/chat',
+    category: 'illinois_representatives',
+  ),
 ];
