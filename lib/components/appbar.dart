@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_wiki_ui/data/dummy_data.dart';
+// import 'package:smart_wiki_ui/data/dummy_data.dart';
 import 'package:smart_wiki_ui/main_page.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 

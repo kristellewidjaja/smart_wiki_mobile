@@ -5,19 +5,17 @@ import 'package:smart_wiki_ui/components/appbar.dart';
 import 'package:flutter_chat_ui/src/widgets/typing_indicator.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+// import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/date_symbol_data_local.dart';
+// import 'package:intl/date_symbol_data_local.dart';
 import 'package:mime/mime.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 import 'package:uuid/uuid.dart';
-import 'package:smart_wiki_ui/components/appbar.dart';
-import 'package:http/http.dart' as http;
 import 'package:smart_wiki_ui/models/request.dart';
 
 class KnowledgeBaseDetailPage extends StatefulWidget {
@@ -33,47 +31,24 @@ class KnowledgeBaseDetailPage extends StatefulWidget {
 class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
   List<types.Message> _messages = [];
 
-  bool _isChatbotResponding = true;
+  // bool _isChatbotResponding = true;
 
   final _user = const types.User(
     id: '82091008-a484-4a89-ae75-a22bf8d6f3ac',
   );
 
-  // final _chatbotuser = const types.User(
-  //   firstName: 'Chatbot',
-  //   imageUrl:
-  //       'https://www.govtrack.us/static/legislator-photos/412534-200px.jpeg',
-  //   id: '2',
-  // );
-
   late types.User _chatbotUser;
-
-  // final _showTypingIndictor = const TypingIndicatorOptions(
-  //   animationSpeed: Duration(milliseconds: 400),
-  //   typingMode: TypingIndicatorMode.both,
-  //   // ignore: avoid_redundant_argument_values
-  //   typingUsers: [
-  //     types.User(
-  //       firstName: 'Chatbot',
-  //       imageUrl:
-  //           'https://www.govtrack.us/static/legislator-photos/412534-200px.jpeg',
-  //       id: '2',
-  //     )
-  //   ],
-  // );
 
   late TypingIndicatorOptions _showTypingIndictor;
 
   final _hideTypingIndictor = const TypingIndicatorOptions(
     animationSpeed: Duration(milliseconds: 400),
     typingMode: TypingIndicatorMode.both,
-    // ignore: avoid_redundant_argument_values
     typingUsers: [],
   );
 
   dynamic _typingIndicatorOptions = const TypingIndicatorOptions(
     animationSpeed: Duration(milliseconds: 400),
-    // ignore: avoid_redundant_argument_values
     typingUsers: [],
   );
 
@@ -82,18 +57,17 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
     super.initState();
 
     _chatbotUser = types.User(
-      firstName: 'Chatbot',
+      firstName: 'Smart Assistant',
       imageUrl: widget.knowledgeBase.imageUrl,
       id: widget.knowledgeBase.id.toString(),
     );
 
     _showTypingIndictor = TypingIndicatorOptions(
-      animationSpeed: Duration(milliseconds: 400),
+      animationSpeed: const Duration(milliseconds: 400),
       typingMode: TypingIndicatorMode.both,
-      // ignore: avoid_redundant_argument_values
       typingUsers: [
         types.User(
-          firstName: 'Chatbot',
+          firstName: 'Smart Assistant',
           imageUrl: widget.knowledgeBase.imageUrl,
           id: widget.knowledgeBase.id.toString(),
         )
@@ -116,6 +90,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
 
     final request = Request(
       query: message,
+      category: widget.knowledgeBase.category,
     );
     final response = await http.post(
       Uri.parse(widget.knowledgeBase.backendAPIUri),

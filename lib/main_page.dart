@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'knowledge_base_detail_page.dart';
+// import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+// import 'knowledge_base_detail_page.dart';
 import 'package:smart_wiki_ui/components/knowledge_base_item.dart';
-import 'package:smart_wiki_ui/models/categories.dart';
+// import 'package:smart_wiki_ui/models/categories.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 import 'package:smart_wiki_ui/data/dummy_data.dart';
 
