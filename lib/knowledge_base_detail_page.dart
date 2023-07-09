@@ -19,9 +19,11 @@ import 'package:uuid/uuid.dart';
 import 'package:smart_wiki_ui/models/request.dart';
 
 class KnowledgeBaseDetailPage extends StatefulWidget {
-  const KnowledgeBaseDetailPage({super.key, required this.knowledgeBase});
+  const KnowledgeBaseDetailPage(
+      {super.key, required this.knowledgeBase, this.defaultQuestionIndex = -1});
 
   final KnowledgeBase knowledgeBase;
+  final int defaultQuestionIndex;
 
   @override
   State<KnowledgeBaseDetailPage> createState() =>
@@ -40,6 +42,8 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
   late types.User _chatbotUser;
 
   late TypingIndicatorOptions _showTypingIndictor;
+
+  late InputTextFieldController _inputTextFieldController;
 
   final _hideTypingIndictor = const TypingIndicatorOptions(
     animationSpeed: Duration(milliseconds: 400),
@@ -73,6 +77,13 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
         )
       ],
     );
+
+    _inputTextFieldController = InputTextFieldController();
+
+    if (widget.defaultQuestionIndex > -1) {
+      _inputTextFieldController.text = widget
+          .knowledgeBase.defaultQuestions[widget.defaultQuestionIndex].prompt;
+    }
 
     _loadMessages();
   }
@@ -292,9 +303,21 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
     //     .map((e) => types.Message.fromJson(e as Map<String, dynamic>))
     //     .toList();
 
-    // setState(() {
-    //   _messages = messages;
-    // });
+    // setState(
+    //   () {
+    //     if (widget.defaultQuestionIndex > -1) {
+    //       _messages = [
+    //         types.TextMessage(
+    //           author: _user,
+    //           createdAt: DateTime.now().millisecondsSinceEpoch,
+    //           id: const Uuid().v4(),
+    //           text: widget.knowledgeBase
+    //               .defaultQuestions[widget.defaultQuestionIndex].prompt,
+    //         )
+    //       ];
+    //     }
+    //   },
+    // );
   }
 
   @override
@@ -312,6 +335,9 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
         showUserAvatars: true,
         showUserNames: true,
         user: _user,
+        inputOptions: InputOptions(
+          textEditingController: _inputTextFieldController,
+        ),
         typingIndicatorOptions: _typingIndicatorOptions,
       ),
     );
