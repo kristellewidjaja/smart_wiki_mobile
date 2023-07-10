@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'main_page.dart';
 
 var lightColorScheme = ColorScheme.fromSeed(
-  seedColor: Color.fromARGB(255, 128, 155, 243),
+  seedColor: Color.fromARGB(255, 255, 255, 255),
 );
 
 // var darkColorScheme = ColorScheme.fromSeed(

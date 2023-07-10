@@ -52,7 +52,7 @@ const knowledgeBaseList = [
     category: 'brad_schneider',
     defaultQuestions: [
       DefaultQuestion(
-        displayText: 'Who is Brad Schneider?',
+        displayText: 'Ask about Brad Schneider',
         prompt: 'Who is Brad Schneider?',
       ),
       DefaultQuestion(
