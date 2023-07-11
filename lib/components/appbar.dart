@@ -22,10 +22,10 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 181, 181, 181),
-              Color.fromARGB(255, 201, 202, 201),
-              Color.fromARGB(255, 222, 222, 222),
-              Color.fromARGB(255, 242, 243, 242),
+              Color.fromARGB(255, 34, 30, 36),
+              Color.fromARGB(255, 83, 97, 108),
+              Color.fromARGB(255, 100, 121, 137),
+              Color.fromARGB(255, 106, 129, 146),
             ],
           ),
         ),
@@ -43,7 +43,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
               icon: const Icon(
                 Icons.arrow_back_ios,
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             const SizedBox(
@@ -65,8 +65,8 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                     knowledgeBase.title,
                     style: const TextStyle(
                       fontSize: 20.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(
