@@ -32,19 +32,19 @@ class _MainPageState extends State<MainPage> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 181, 181, 181),
-                Color.fromARGB(255, 201, 202, 201),
-                Color.fromARGB(255, 222, 222, 222),
-                Color.fromARGB(255, 242, 243, 242),
+                Color.fromARGB(255, 34, 30, 36),
+                Color.fromARGB(255, 83, 97, 108),
+                Color.fromARGB(255, 100, 121, 137),
+                Color.fromARGB(255, 106, 129, 146),
               ],
             ),
           ),
         ),
         title: const Text(
           'Smart Wiki',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

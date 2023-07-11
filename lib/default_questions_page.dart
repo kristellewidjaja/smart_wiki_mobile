@@ -24,37 +24,129 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 181, 181, 181),
-                Color.fromARGB(255, 201, 202, 201),
-                Color.fromARGB(255, 222, 222, 222),
-                Color.fromARGB(255, 242, 243, 242),
+                Color.fromARGB(255, 34, 30, 36),
+                Color.fromARGB(255, 83, 97, 108),
+                Color.fromARGB(255, 100, 121, 137),
+                Color.fromARGB(255, 106, 129, 146),
               ],
             ),
           ),
         ),
         title: Text(
           widget.knowledgeBase.title,
-          style: const TextStyle(color: Colors.black),
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: _buildDefaultQuestionChips(),
-        ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              // Container(
+              //   color: const Color.fromARGB(255, 106, 129, 146),
+              //   child: const Padding(
+              //     padding: EdgeInsets.all(16.0),
+              //     child: Text(
+              //       'Select a default question',
+              //       style: TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 20,
+              //         fontWeight: FontWeight.bold,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Ink(
+                  decoration: const ShapeDecoration(
+                    color: Color.fromARGB(50, 106, 129, 146),
+                    shape: CircleBorder(),
+                  ),
+                  child: IconButton(
+                      onPressed: () => showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text('Help'),
+                              content: const Text(
+                                  'Tap skip to ask your own questions or select one of the default questions below and tap continue'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text('Close'),
+                                ),
+                              ],
+                            ),
+                          ),
+                      icon: const Icon(
+                        Icons.question_mark_rounded,
+                        color: Colors.black,
+                      )),
+                ),
+              ),
+              // ElevatedButton(
+              //   onPressed: () => showDialog(
+              //     context: context,
+              //     builder: (context) => AlertDialog(
+              //       title: const Text('Help'),
+              //       content:
+              //           const Text('Select a default question to continue'),
+              //       actions: [
+              //         TextButton(
+              //           onPressed: () => Navigator.pop(context, 'Cancel'),
+              //           child: const Text('Cancel'),
+              //         ),
+              //         TextButton(
+              //           onPressed: () => Navigator.pop(context, 'OK'),
+              //           child: const Text('OK'),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              //   style: ElevatedButton.styleFrom(
+              //     fixedSize: const Size(50, 50),
+              //     shape: const CircleBorder(),
+              //   ),
+              //   child: const Icon(
+              //     Icons.question_mark,
+              //     color: Colors.black,
+              //   ),
+              // )
+            ],
+          ),
+          Expanded(
+            child: ListView(
+              children: _buildDefaultQuestionChips(),
+            ),
+          ),
+        ],
       ),
+
+      // Padding(
+      //   padding: const EdgeInsets.all(16.0),
+      //   child: ListView(
+      //     children: _buildDefaultQuestionChips(),
+      //   ),
+      // ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // Fixed
+        backgroundColor: Colors.black, // <-- This works for fixed
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
         currentIndex: 0,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.skip_next),
             label: 'Skip',
+
             // backgroundColor: Colors.deepPurple,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_circle_right),
             label: 'Continue',
+
             // backgroundColor: Colors.deepPurple,
           ),
         ],
@@ -89,7 +181,7 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
       widget.knowledgeBase.defaultQuestions.length,
       (index) => ChoiceChip(
         label: Text(widget.knowledgeBase.defaultQuestions[index].displayText),
-        selectedColor: Colors.grey[300],
+        selectedColor: const Color.fromARGB(125, 106, 129, 146),
         selected: _selectedDefaultQuestionIndex == index,
         onSelected: (selected) {
           setState(
