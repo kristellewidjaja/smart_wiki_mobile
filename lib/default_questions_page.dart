@@ -71,7 +71,7 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                             builder: (context) => AlertDialog(
                               title: const Text('Help'),
                               content: const Text(
-                                  'Tap skip to ask your own questions or select one of the default questions below and tap continue'),
+                                  'Tap Skip to ask your own question \n\nOr select one of the default questions and tap Continue'),
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(context, 'OK'),
