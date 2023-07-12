@@ -16,7 +16,7 @@ import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 import 'package:uuid/uuid.dart';
-import 'package:smart_wiki_ui/models/request.dart';
+import 'package:smart_wiki_ui/models/chat_request.dart';
 
 class KnowledgeBaseDetailPage extends StatefulWidget {
   const KnowledgeBaseDetailPage(
@@ -99,9 +99,9 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
       _typingIndicatorOptions = _showTypingIndictor;
     });
 
-    final request = Request(
+    final request = ChatRequest(
       query: message,
-      category: widget.knowledgeBase.category,
+      metadata: widget.knowledgeBase.category,
     );
     final response = await http.post(
       Uri.parse(widget.knowledgeBase.backendAPIUri),
@@ -115,12 +115,12 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       print(jsonDecode(response.body));
-      final chatbotResponse = jsonDecode(response.body);
+      final chatResponse = jsonDecode(response.body);
       final responseMessage = types.TextMessage(
         author: _chatbotUser,
         createdAt: DateTime.now().millisecondsSinceEpoch,
         id: const Uuid().v4(),
-        text: chatbotResponse['data'],
+        text: chatResponse['data'],
       );
 
       setState(() {
