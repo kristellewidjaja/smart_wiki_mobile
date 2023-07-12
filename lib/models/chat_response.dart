@@ -1,15 +1,15 @@
-class Response {
+class ChatResponse {
   String status;
   String _data;
 
-  Response({
+  ChatResponse({
     required this.status,
     required String data,
   }) : _data = data;
 
   String get data => _data;
 
-  Response.fromJson(Map<String, dynamic> json)
+  ChatResponse.fromJson(Map<String, dynamic> json)
       : status = json['status'],
         _data = json['data'];
 
