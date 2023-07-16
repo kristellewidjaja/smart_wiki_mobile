@@ -101,10 +101,10 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
 
     final request = ChatRequest(
       query: message,
-      metadata: widget.knowledgeBase.category,
+      metadata: widget.knowledgeBase.metadata,
     );
     final response = await http.post(
-      Uri.parse(widget.knowledgeBase.backendAPIUri),
+      Uri.parse('http://localhost:5001/knowledgebases/chat'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

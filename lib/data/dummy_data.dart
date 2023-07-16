@@ -4,11 +4,11 @@ import 'package:smart_wiki_ui/models/knowledge_base.dart';
 const knowledgeBaseList = [
   KnowledgeBase(
     id: 1,
-    title: 'GBN',
+    subject: 'GBN',
     imageUrl:
         'https://www.dailyherald.com/apps/pbcsi.dll/urlget?url=https://www.dailyherald.com/gfx/site/basketball/team_logos/Glenbrook-North.jpg&exactW=90&exactH=90&exactFit=crop&alignV=top',
     backendAPIUri: 'http://localhost:5001/knowledgebases/chat',
-    category: 'gbn',
+    metadata: 'gbn',
     defaultQuestions: [
       DefaultQuestion(
         displayText: 'Ask about the early graduation policy',
@@ -27,11 +27,11 @@ const knowledgeBaseList = [
   ),
   KnowledgeBase(
     id: 2,
-    title: 'GBS',
+    subject: 'GBS',
     imageUrl:
         'https://patch.com/img/cdn20/users/22915293/20190830/045949/styles/patch_image/public/glenbrook-south-logo-1537201366-7288___30165130916.jpg?width=1200',
     backendAPIUri: 'http://localhost:5001/knowledgebases/chat',
-    category: 'gbs',
+    metadata: 'gbs',
     defaultQuestions: [
       DefaultQuestion(
         displayText: 'Ask about the SELC program',
@@ -45,11 +45,11 @@ const knowledgeBaseList = [
   ),
   KnowledgeBase(
     id: 3,
-    title: 'Brad Schneider',
+    subject: 'Brad Schneider',
     imageUrl:
         'https://www.govtrack.us/static/legislator-photos/412534-200px.jpeg',
     backendAPIUri: 'http://localhost:5001/knowledgebases/chat',
-    category: 'brad_schneider',
+    metadata: 'brad_schneider',
     defaultQuestions: [
       DefaultQuestion(
         displayText: 'Ask about Brad Schneider',
@@ -67,11 +67,11 @@ const knowledgeBaseList = [
   ),
   KnowledgeBase(
     id: 4,
-    title: 'Lane Tech',
+    subject: 'Lane Tech',
     imageUrl:
         'https://i0.wp.com/lanetech.org/wp-content/uploads/2018/12/facebook-opengraph.jpg?fit=1200%2C630&ssl=1',
     backendAPIUri: 'http://localhost:5001/knowledgebases/chat',
-    category: 'lane_tech',
+    metadata: 'lane_tech',
     defaultQuestions: [
       DefaultQuestion(
         displayText: 'Ask about the memorial garden',
@@ -89,11 +89,11 @@ const knowledgeBaseList = [
   ),
   KnowledgeBase(
     id: 5,
-    title: 'Jones College Prep',
+    subject: 'Jones College Prep',
     imageUrl:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvhgxHozezAcgnCoZnb5tgLtxFm2DC20YuHjvIJbL-2g&s',
     backendAPIUri: 'http://localhost:5001/knowledgebases/chat',
-    category: 'jones_college_prep',
+    metadata: 'jones_college_prep',
     defaultQuestions: [
       DefaultQuestion(
         displayText: 'Ask about the transfer policy',
@@ -103,11 +103,11 @@ const knowledgeBaseList = [
   ),
   KnowledgeBase(
     id: 6,
-    title: 'Jan Schakowsky',
+    subject: 'Jan Schakowsky',
     imageUrl:
         'https://www.govtrack.us/static/legislator-photos/400360-200px.jpeg',
     backendAPIUri: 'http://localhost:5001/knowledgebases/chat',
-    category: 'jan_schakowsky',
+    metadata: 'jan_schakowsky',
     defaultQuestions: [
       DefaultQuestion(
         displayText: 'Ask about Jan\'s passport renewal assistance',
@@ -122,11 +122,11 @@ const knowledgeBaseList = [
   ),
   KnowledgeBase(
     id: 7,
-    title: 'Illinois Representatives',
+    subject: 'Illinois Representatives',
     imageUrl:
         'https://starspangledflags.com/wp-content/uploads/il-stateflag-main.jpg',
     backendAPIUri: 'http://localhost:5001/knowledgebases/chat',
-    category: 'illinois_representatives',
+    metadata: 'illinois_representatives',
     defaultQuestions: [
       DefaultQuestion(
         displayText: 'Ask about Jan\'s and Brad\'s passport renewal assistance',

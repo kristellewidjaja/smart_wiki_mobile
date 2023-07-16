@@ -61,7 +61,7 @@ class _KnowledgeBaseItemState extends State<KnowledgeBaseItem> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            widget.knowledgeBase.title,
+                            widget.knowledgeBase.subject,
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),

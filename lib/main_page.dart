@@ -6,6 +6,8 @@ import 'package:smart_wiki_ui/components/knowledge_base_item.dart';
 // import 'package:smart_wiki_ui/models/categories.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 import 'package:smart_wiki_ui/data/dummy_data.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MainPage extends StatefulWidget {
   @override
@@ -19,6 +21,30 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     _filteredKnowledgeBaseList = knowledgeBaseList;
     super.initState();
+  }
+
+  Future<List<KnowledgeBase>> getKnowledgeBaseList() async {
+    final response = await http.get(
+      Uri.parse('http://localhost:5001/knowledgebases'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      print(jsonDecode(response.body));
+      final knowledgeBaseListResponse = jsonDecode(response.body);
+      return [];
+      // return knowledgeBaseListResponse
+      //     .map((knowledgeBase) => KnowledgeBase.fromJson(knowledgeBase))
+      //     .toList();
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to retrieve knowledge base list');
+    }
   }
 
   @override
@@ -59,7 +85,7 @@ class _MainPageState extends State<MainPage> {
                     _filteredKnowledgeBaseList = knowledgeBaseList.where(
                       (knowledgeBase) {
                         var knowledgeBaseTitle =
-                            knowledgeBase.title.toLowerCase();
+                            knowledgeBase.subject.toLowerCase();
                         return knowledgeBaseTitle.contains(value);
                       },
                     ).toList();
