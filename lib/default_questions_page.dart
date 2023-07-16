@@ -33,7 +33,7 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
           ),
         ),
         title: Text(
-          widget.knowledgeBase.title,
+          widget.knowledgeBase.subject,
           style:
               const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),

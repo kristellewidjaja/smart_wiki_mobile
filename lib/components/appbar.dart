@@ -62,7 +62,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    knowledgeBase.title,
+                    knowledgeBase.subject,
                     style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
