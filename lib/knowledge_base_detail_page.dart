@@ -103,6 +103,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
       query: message,
       metadata: widget.knowledgeBase.metadata,
     );
+
     final response = await http.post(
       Uri.parse('http://localhost:5001/knowledgebases/chat'),
       headers: <String, String>{

@@ -1,31 +1,57 @@
 // import 'package:flutter/material.dart';
+import 'dart:convert';
+
 import 'package:smart_wiki_ui/models/default_question.dart';
 
 class KnowledgeBase {
-  const KnowledgeBase(
-      {required this.id,
-      required this.subject,
-      required this.imageUrl,
+  KnowledgeBase(
+      this.id,
+      this.subject,
+      this.imageUrl,
       // required this.backendAPIUri,
-      required this.metadata,
-      this.defaultQuestions = const []});
+      this.metadata,
+      [this.defaultQuestions = const []]);
 
-  final int id;
-  final String subject;
-  final String imageUrl;
+  int id;
+  String subject;
+  String imageUrl;
   // final String backendAPIUri;
-  final String metadata;
-  final List<DefaultQuestion> defaultQuestions;
+  String metadata;
+  List<DefaultQuestion> defaultQuestions;
 
-  KnowledgeBase.fromJson(Map<String, dynamic> json)
-      : id = json['id'],
-        subject = json['subject'],
-        metadata = json['metadata'],
-        imageUrl = json['imageUrl'];
-        defaultQuestion = json['defaultQuestion'];
+  factory KnowledgeBase.fromJson(dynamic json) {
+    if (json['default_questions'] != null) {
+      var defaultQuestionsJson = json['default_questions'] as List;
+      List<DefaultQuestion> _defaultQuestions = defaultQuestionsJson
+          .map((defaultQuestionJson) =>
+              DefaultQuestion.fromJson(defaultQuestionJson))
+          .toList();
 
-  Map<String, dynamic> toJson() => {
-        'status': status,
-        'data': _data,
-      };
+      return KnowledgeBase(
+          json['id'] as int,
+          json['subject'] as String,
+          json['image_url'] as String,
+          json['metadata'] as String,
+          _defaultQuestions);
+    } else {
+      return KnowledgeBase(json['id'] as int, json['subject'] as String,
+          json['image_url'] as String, json['metadata'] as String, []);
+    }
+  }
+
+  // KnowledgeBase.fromJson(Map<String, dynamic> json)
+  //     : id = json['id'],
+  //       subject = json['subject'],
+  //       metadata = json['metadata'],
+  //       imageUrl = json['image_url'],
+  //       defaultQuestions = json['default_questions'].cast(List<KnowledgeBase>);
+  //  defaultQuestions =
+  //     json['default_questions'].map((dynamic defaultQuestion) {
+  //   return DefaultQuestion.fromJson(defaultQuestion);
+  // }).toList();
+
+  // Map<String, dynamic> toJson() => {
+  //       'status': status,
+  //       'data': _data,
+  //     };
 }
