@@ -27,6 +27,8 @@ class _MainPageState extends State<MainPage> {
   void _intializeKnowledgeBaseList() async {
     final url = Uri.http('localhost:5001', '/knowledgebases');
 
+    // 'localhost:5001'
+
     final response = await http.get(
       url,
       headers: <String, String>{

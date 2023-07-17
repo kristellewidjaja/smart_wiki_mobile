@@ -64,9 +64,9 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Text(
                     knowledgeBase.subject,
                     style: const TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 12.0,
                       color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
                   const SizedBox(
