@@ -69,9 +69,18 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                       onPressed: () => showDialog(
                             context: context,
                             builder: (context) => AlertDialog(
-                              title: const Text('Help'),
+                              title: const Text(
+                                'Help',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 12, fontWeight: FontWeight.bold),
+                              ),
                               content: const Text(
-                                  'Tap Skip to ask your own question \n\nOr select one of the default questions and tap Continue'),
+                                'Tap Skip to ask your own question \n\nOr select one of the default questions and tap Continue',
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.normal),
+                              ),
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(context, 'OK'),
@@ -180,7 +189,11 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
     return List<Widget>.generate(
       widget.knowledgeBase.defaultQuestions.length,
       (index) => ChoiceChip(
-        label: Text(widget.knowledgeBase.defaultQuestions[index].displayText),
+        label: Text(
+          widget.knowledgeBase.defaultQuestions[index].displayText,
+          style: const TextStyle(
+              color: Colors.black, fontSize: 10, fontWeight: FontWeight.normal),
+        ),
         selectedColor: const Color.fromARGB(125, 106, 129, 146),
         selected: _selectedDefaultQuestionIndex == index,
         onSelected: (selected) {

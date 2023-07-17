@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'main_page.dart';
 
 var lightColorScheme = ColorScheme.fromSeed(
@@ -10,7 +11,21 @@ var lightColorScheme = ColorScheme.fromSeed(
 // );
 
 void main() {
-  runApp(const SmartWikiApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  ).then(
+    (value) => runApp(
+      const SmartWikiApp(),
+    ),
+  );
+
+  runApp(
+    const SmartWikiApp(),
+  );
 }
 
 // Create a class with MaterialApp
