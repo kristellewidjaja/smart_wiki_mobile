@@ -34,8 +34,10 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
         ),
         title: Text(
           widget.knowledgeBase.subject,
-          style:
-              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: const TextStyle(
+              color: Colors.white,
+              fontFamily: 'San Francisco',
+              fontWeight: FontWeight.bold),
         ),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
@@ -73,12 +75,15 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                                 'Help',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.bold),
+                                    fontSize: 12,
+                                    fontFamily: 'San Francisco',
+                                    fontWeight: FontWeight.bold),
                               ),
                               content: const Text(
                                 'Tap Skip to ask your own question \n\nOr select one of the default questions and tap Continue',
                                 style: TextStyle(
                                     fontSize: 10,
+                                    fontFamily: 'San Francisco',
                                     fontWeight: FontWeight.normal),
                               ),
                               actions: [
@@ -192,7 +197,10 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
         label: Text(
           widget.knowledgeBase.defaultQuestions[index].displayText,
           style: const TextStyle(
-              color: Colors.black, fontSize: 10, fontWeight: FontWeight.normal),
+              color: Colors.black,
+              fontFamily: 'San Francisco',
+              fontSize: 14,
+              fontWeight: FontWeight.normal),
         ),
         selectedColor: const Color.fromARGB(125, 106, 129, 146),
         selected: _selectedDefaultQuestionIndex == index,
