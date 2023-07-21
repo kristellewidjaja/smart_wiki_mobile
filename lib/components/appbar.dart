@@ -50,7 +50,6 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
               width: 2,
             ),
             CircleAvatar(
-              backgroundColor: Colors.white,
               backgroundImage: NetworkImage(knowledgeBase.imageUrl),
               maxRadius: 20,
             ),
@@ -68,7 +67,6 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                       fontSize: 12.0,
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
-                      fontFamily: 'San Francisco',
                     ),
                   ),
                   const SizedBox(
