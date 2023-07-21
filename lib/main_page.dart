@@ -25,9 +25,11 @@ class _MainPageState extends State<MainPage> {
   }
 
   void _intializeKnowledgeBaseList() async {
-    final url = Uri.http('localhost:5001', '/knowledgebases');
-
-    // 'localhost:5001'
+    // final url = Uri.http('localhost:5001', '/knowledgebases');
+    final url = Uri.http(
+      'localhost:5001',
+      '/knowledgebases',
+    );
 
     final response = await http.get(
       url,
@@ -103,7 +105,10 @@ class _MainPageState extends State<MainPage> {
         ),
         title: const Text(
           'Smart Wiki',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'San Francisco',
+              fontWeight: FontWeight.bold),
         ),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
@@ -129,7 +134,10 @@ class _MainPageState extends State<MainPage> {
               },
               decoration: InputDecoration(
                 hintText: "Search...",
-                hintStyle: TextStyle(color: Colors.grey.shade400),
+                hintStyle: TextStyle(
+                  color: Colors.grey.shade400,
+                  fontFamily: 'San Francisco',
+                ),
                 prefixIcon: Icon(
                   Icons.search,
                   color: Colors.grey.shade400,
