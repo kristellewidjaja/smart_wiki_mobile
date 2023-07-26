@@ -21,10 +21,10 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
 
-    _intializeKnowledgeBaseList();
+    _getKnowledgeBaseList();
   }
 
-  void _intializeKnowledgeBaseList() async {
+  Future _getKnowledgeBaseList() async {
     // final url = Uri.http('localhost:5001', '/knowledgebases');
     final url = Uri.http(
       'localhost:5001',
@@ -153,16 +153,22 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: _filteredKnowledgeBaseList.length,
-              shrinkWrap: true,
-              padding: const EdgeInsets.only(top: 16),
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return KnowledgeBaseItem(
-                  knowledgeBase: _filteredKnowledgeBaseList[index],
-                );
-              },
+            child: RefreshIndicator(
+              color: Colors.white,
+              backgroundColor: Color.fromARGB(255, 100, 121, 137),
+              strokeWidth: 3.0,
+              onRefresh: _getKnowledgeBaseList,
+              child: ListView.builder(
+                itemCount: _filteredKnowledgeBaseList.length,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(top: 16),
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return KnowledgeBaseItem(
+                    knowledgeBase: _filteredKnowledgeBaseList[index],
+                  );
+                },
+              ),
             ),
           ),
         ],
