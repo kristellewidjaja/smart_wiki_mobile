@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:smart_wiki_ui/data/dummy_data.dart';
 import 'package:smart_wiki_ui/main_page.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 
@@ -51,6 +50,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             CircleAvatar(
               backgroundColor: Colors.white,
+              foregroundColor: Colors.white,
               backgroundImage: NetworkImage(knowledgeBase.imageUrl),
               maxRadius: 20,
             ),
@@ -77,10 +77,6 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ],
               ),
             ),
-            // Icon(
-            //   Icons.more_vert,
-            //   color: Colors.grey.shade700,
-            // ),
           ],
         ),
       ),

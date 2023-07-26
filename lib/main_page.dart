@@ -2,10 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-// import 'knowledge_base_detail_page.dart';
 import 'package:smart_wiki_ui/components/knowledge_base_item.dart';
-// import 'package:smart_wiki_ui/models/categories.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -23,10 +20,10 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
 
-    _intializeKnowledgeBaseList();
+    _getKnowledgeBaseList();
   }
 
-  void _intializeKnowledgeBaseList() async {
+  Future _getKnowledgeBaseList() async {
     final url = Uri.http(
       'localhost:5001',
       '/knowledgebases',
@@ -45,7 +42,6 @@ class _MainPageState extends State<MainPage> {
       // then parse the JSON.
       // print(jsonDecode(response.body));
       final List<dynamic> knowledgeBaseListResponse = jsonDecode(response.body);
-      // return [];
       _knowledgeBaseList = knowledgeBaseListResponse
           .map((knowledgeBase) => KnowledgeBase.fromJson(knowledgeBase))
           .toList();
@@ -59,36 +55,8 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
-  // Future<List<KnowledgeBase>> _getKnowledgeBaseList() async {
-  //   final url = Uri.http('localhost:5001', '/knowledgebases');
-
-  //   final response = await http.get(
-  //     url,
-  //     headers: <String, String>{
-  //       'Content-Type': 'application/json; charset=UTF-8',
-  //     },
-  //   );
-
-  //   if (response.statusCode == 200) {
-  //     // If the server did return a 200 OK response,
-  //     // then parse the JSON.
-  //     print(jsonDecode(response.body));
-  //     final knowledgeBaseListResponse = jsonDecode(response.body);
-  //     // return [];
-  //     final knowledgeBaseList = knowledgeBaseListResponse
-  //         .map((knowledgeBase) => KnowledgeBase.fromJson(knowledgeBase))
-  //         .toList();
-  //     // return knowledgeBaseList;
-  //   } else {
-  //     // If the server did not return a 200 OK response,
-  //     // then throw an exception.
-  //     throw Exception('Failed to retrieve knowledge base list');
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // Scaffold with bottom navigation bar and 3 items in it with onTap function to navigate to different Pages(Home, Chat, Profile)
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -155,48 +123,26 @@ class _MainPageState extends State<MainPage> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: _filteredKnowledgeBaseList.length,
-              shrinkWrap: true,
-              padding: const EdgeInsets.only(top: 16),
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return KnowledgeBaseItem(
-                  knowledgeBase: _filteredKnowledgeBaseList[index],
-                );
-              },
+            child: RefreshIndicator(
+              color: Colors.white,
+              backgroundColor: Color.fromARGB(255, 100, 121, 137),
+              strokeWidth: 3.0,
+              onRefresh: _getKnowledgeBaseList,
+              child: ListView.builder(
+                itemCount: _filteredKnowledgeBaseList.length,
+                shrinkWrap: true,
+                padding: const EdgeInsets.only(top: 16),
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return KnowledgeBaseItem(
+                    knowledgeBase: _filteredKnowledgeBaseList[index],
+                  );
+                },
+              ),
             ),
           ),
         ],
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: 0,
-      //   items: const [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Home',
-      //       // backgroundColor: Colors.deepPurple,
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.person),
-      //       label: 'Profile',
-      //       // backgroundColor: Colors.deepPurple,
-      //     ),
-      //   ],
-      //   onTap: (index) {
-      //     if (index == 0) {
-      //       Navigator.push(
-      //         context,
-      //         MaterialPageRoute(builder: (context) => MainPage()),
-      //       );
-      //     } else if (index == 1) {
-      //       Navigator.push(
-      //         context,
-      //         MaterialPageRoute(builder: (context) => MainPage()),
-      //       );
-      //     }
-      //   },
-      // ),
     );
   }
 }
