@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:smart_wiki_ui/components/appbar.dart';
+import 'package:smart_wiki_ui/components/chat_app_bar.dart';
 import 'package:flutter_chat_ui/src/widgets/typing_indicator.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
