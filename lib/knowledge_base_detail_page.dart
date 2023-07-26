@@ -113,6 +113,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        HttpHeaders.authorizationHeader: '',
       },
       body: jsonEncode(request),
     );

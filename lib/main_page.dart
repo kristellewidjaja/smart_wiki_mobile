@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_chat_ui/flutter_chat_ui.dart';
@@ -25,7 +27,6 @@ class _MainPageState extends State<MainPage> {
   }
 
   void _intializeKnowledgeBaseList() async {
-    // final url = Uri.http('localhost:5001', '/knowledgebases');
     final url = Uri.http(
       'localhost:5001',
       '/knowledgebases',
@@ -35,6 +36,7 @@ class _MainPageState extends State<MainPage> {
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        HttpHeaders.authorizationHeader: '',
       },
     );
 
