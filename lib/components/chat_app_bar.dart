@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_wiki_ui/main_page.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
@@ -65,7 +64,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                   Text(
                     knowledgeBase.subject,
                     style: const TextStyle(
-                      fontSize: 12.0,
+                      fontSize: 15.0,
                       color: Colors.white,
                       fontWeight: FontWeight.normal,
                       fontFamily: 'San Francisco',

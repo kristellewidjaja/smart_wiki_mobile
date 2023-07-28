@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:smart_wiki_ui/components/chat_app_bar.dart';
-import 'package:flutter_chat_ui/src/widgets/typing_indicator.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart' show rootBundle;
@@ -105,7 +104,8 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
     );
 
     final url = Uri.http(
-      'localhost:5001',
+      '10.0.0.20:5001',
+      // 'localhost:5001',
       '/knowledgebases/chat',
     );
 
@@ -113,6 +113,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
       url,
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        HttpHeaders.authorizationHeader: '',
       },
       body: jsonEncode(request),
     );
