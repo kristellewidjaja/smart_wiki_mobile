@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_wiki_ui/components/knowledge_base_item.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
@@ -25,7 +24,8 @@ class _MainPageState extends State<MainPage> {
 
   Future _getKnowledgeBaseList() async {
     final url = Uri.http(
-      'localhost:5001',
+      '10.0.0.20:5001',
+      // 'localhost:5001',
       '/knowledgebases',
     );
 

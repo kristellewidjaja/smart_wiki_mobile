@@ -12,7 +12,25 @@ class DefaultQuestionsPage extends StatefulWidget {
 }
 
 class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
+  final controller = ScrollController();
   int _selectedDefaultQuestionIndex = 0;
+  final double itemSize = 100.0;
+
+  void _scrollListener() {
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(_scrollListener);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,20 +64,6 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              // Container(
-              //   color: const Color.fromARGB(255, 106, 129, 146),
-              //   child: const Padding(
-              //     padding: EdgeInsets.all(16.0),
-              //     child: Text(
-              //       'Select a default question',
-              //       style: TextStyle(
-              //         color: Colors.white,
-              //         fontSize: 20,
-              //         fontWeight: FontWeight.bold,
-              //       ),
-              //     ),
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Ink(
@@ -75,21 +79,27 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                                 'Help',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 20,
                                     fontFamily: 'San Francisco',
                                     fontWeight: FontWeight.bold),
                               ),
                               content: const Text(
-                                'Tap Skip to ask your own question \n\nOr select one of the default questions and tap Continue',
+                                'Tap Skip to ask your own question or select one of the default questions and tap Continue',
                                 style: TextStyle(
-                                    fontSize: 10,
+                                    fontSize: 15,
                                     fontFamily: 'San Francisco',
                                     fontWeight: FontWeight.normal),
                               ),
                               actions: [
                                 TextButton(
                                   onPressed: () => Navigator.pop(context, 'OK'),
-                                  child: const Text('Close'),
+                                  child: const Text(
+                                    'Close',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        fontFamily: 'San Francisco',
+                                        fontWeight: FontWeight.normal),
+                                  ),
                                 ),
                               ],
                             ),
@@ -100,41 +110,91 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                       )),
                 ),
               ),
-              // ElevatedButton(
-              //   onPressed: () => showDialog(
-              //     context: context,
-              //     builder: (context) => AlertDialog(
-              //       title: const Text('Help'),
-              //       content:
-              //           const Text('Select a default question to continue'),
-              //       actions: [
-              //         TextButton(
-              //           onPressed: () => Navigator.pop(context, 'Cancel'),
-              //           child: const Text('Cancel'),
-              //         ),
-              //         TextButton(
-              //           onPressed: () => Navigator.pop(context, 'OK'),
-              //           child: const Text('OK'),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              //   style: ElevatedButton.styleFrom(
-              //     fixedSize: const Size(50, 50),
-              //     shape: const CircleBorder(),
-              //   ),
-              //   child: const Icon(
-              //     Icons.question_mark,
-              //     color: Colors.black,
-              //   ),
-              // )
             ],
           ),
           Expanded(
-            child: ListView(
-              children: _buildDefaultQuestionChips(),
-            ),
-          ),
+              child: Stack(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: ListView.builder(
+                  itemCount: widget.knowledgeBase.defaultQuestions.length,
+                  controller: controller,
+                  itemBuilder: (context, index) {
+                    final itemOffset = itemSize * index;
+                    final difference = controller.offset - itemOffset;
+                    final percent = 1 - (difference / (itemSize / 2));
+                    double opacity = percent;
+                    if (opacity > 1.0) opacity = 1.0;
+                    if (opacity < 0.0) opacity = 0.0;
+                    double scale = percent;
+                    if (scale > 1.0) scale = 1.0;
+
+                    return Opacity(
+                      opacity: opacity,
+                      child: Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.identity()..scale(scale, 1.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _selectedDefaultQuestionIndex = index;
+                            });
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.all(8.0),
+                            height: itemSize,
+                            decoration: BoxDecoration(
+                              color: _selectedDefaultQuestionIndex == index
+                                  ? Color.fromARGB(255, 106, 129, 146)
+                                  : Color.fromARGB(125, 106, 129, 146),
+                              borderRadius: BorderRadius.circular(12.0),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 1.0,
+                                  spreadRadius: 2,
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                widget.knowledgeBase.defaultQuestions[index]
+                                    .displayText,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'San Francisco',
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              // Container(
+              //   height: 150,
+              //   decoration: BoxDecoration(
+              //     gradient: LinearGradient(
+              //       begin: Alignment.topCenter,
+              //       end: Alignment.bottomCenter,
+              //       colors: [Colors.white, Colors.transparent],
+              //     ),
+              //   ),
+              // ),
+            ],
+          )
+              // ListView(
+              //   children: _buildDefaultQuestionChips(),
+              // ),
+              ),
         ],
       ),
 
@@ -145,8 +205,8 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
       //   ),
       // ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Fixed
-        backgroundColor: Colors.black, // <-- This works for fixed
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.black,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
         currentIndex: 0,
@@ -154,14 +214,10 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.skip_next),
             label: 'Skip',
-
-            // backgroundColor: Colors.deepPurple,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.arrow_circle_right),
             label: 'Continue',
-
-            // backgroundColor: Colors.deepPurple,
           ),
         ],
         onTap: (index) {

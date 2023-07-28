@@ -1,6 +1,4 @@
-import 'package:smart_wiki_ui/data/dummy_data.dart';
 import 'package:smart_wiki_ui/default_questions_page.dart';
-import 'package:smart_wiki_ui/knowledge_base_detail_page.dart';
 import 'package:flutter/material.dart';
 // import 'package:smart_wiki_ui/data/dummy_data.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
