@@ -16,6 +16,8 @@ class KnowledgeBaseItem extends StatefulWidget {
 }
 
 class _KnowledgeBaseItemState extends State<KnowledgeBaseItem> {
+  final avatarImagePath = 'assets/avatars/';
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -45,8 +47,8 @@ class _KnowledgeBaseItemState extends State<KnowledgeBaseItem> {
               child: Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage:
-                        NetworkImage(widget.knowledgeBase.imageUrl),
+                    backgroundImage: AssetImage(
+                        avatarImagePath + widget.knowledgeBase.imageUrl),
                     maxRadius: 30,
                   ),
                   const SizedBox(
