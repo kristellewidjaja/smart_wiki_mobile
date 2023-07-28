@@ -24,8 +24,8 @@ class _MainPageState extends State<MainPage> {
 
   Future _getKnowledgeBaseList() async {
     final url = Uri.http(
-      '10.0.0.20:5001',
-      // 'localhost:5001',
+      // '10.0.0.20:5001',
+      'localhost:5001',
       '/knowledgebases',
     );
 

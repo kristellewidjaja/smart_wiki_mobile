@@ -9,6 +9,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   final KnowledgeBase knowledgeBase;
+  final avatarImagePath = 'assets/avatars/';
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,8 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
             CircleAvatar(
               backgroundColor: Colors.white,
               foregroundColor: Colors.white,
-              backgroundImage: NetworkImage(knowledgeBase.imageUrl),
+              backgroundImage:
+                  AssetImage(avatarImagePath + knowledgeBase.imageUrl),
               maxRadius: 20,
             ),
             const SizedBox(
@@ -66,7 +68,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                     style: const TextStyle(
                       fontSize: 15.0,
                       color: Colors.white,
-                      fontWeight: FontWeight.normal,
+                      fontWeight: FontWeight.bold,
                       fontFamily: 'San Francisco',
                     ),
                   ),

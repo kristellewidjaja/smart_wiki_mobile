@@ -31,6 +31,7 @@ class KnowledgeBaseDetailPage extends StatefulWidget {
 
 class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
   List<types.Message> _messages = [];
+  final avatarImagePath = 'assets/avatars/';
 
   // bool _isChatbotResponding = true;
 
@@ -61,7 +62,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
 
     _chatbotUser = types.User(
       firstName: 'Smart Assistant',
-      imageUrl: widget.knowledgeBase.imageUrl,
+      imageUrl: avatarImagePath + widget.knowledgeBase.imageUrl,
       id: widget.knowledgeBase.id.toString(),
     );
 
@@ -71,7 +72,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
       typingUsers: [
         types.User(
           firstName: 'Smart Assistant',
-          imageUrl: widget.knowledgeBase.imageUrl,
+          imageUrl: avatarImagePath + widget.knowledgeBase.imageUrl,
           id: widget.knowledgeBase.id.toString(),
         )
       ],
@@ -104,8 +105,8 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
     );
 
     final url = Uri.http(
-      '10.0.0.20:5001',
-      // 'localhost:5001',
+      // '10.0.0.20:5001',
+      'localhost:5001',
       '/knowledgebases/chat',
     );
 
