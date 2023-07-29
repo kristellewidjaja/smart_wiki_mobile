@@ -31,7 +31,7 @@ class KnowledgeBaseDetailPage extends StatefulWidget {
 
 class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
   List<types.Message> _messages = [];
-  final avatarImagePath = 'assets/avatars/';
+  final avatarImagePath = 'http://www.andywidjaja.com/assets/avatars/';
 
   // bool _isChatbotResponding = true;
 
