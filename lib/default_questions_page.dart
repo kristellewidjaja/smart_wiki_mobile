@@ -1,11 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:smart_wiki_ui/knowledge_base_detail_page.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
+import 'package:getwidget/getwidget.dart';
 
 class DefaultQuestionsPage extends StatefulWidget {
-  const DefaultQuestionsPage({super.key, required this.knowledgeBase});
+  const DefaultQuestionsPage(
+      {super.key, required this.knowledgeBase, required this.color});
 
   final KnowledgeBase knowledgeBase;
+  final Color color;
 
   @override
   State<DefaultQuestionsPage> createState() => _DefaultQuestionsPageState();
@@ -15,6 +20,12 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
   final controller = ScrollController();
   int _selectedDefaultQuestionIndex = 0;
   final double itemSize = 100.0;
+  final List<Color> cardColors = [
+    Color.fromARGB(255, 255, 149, 0),
+    Color.fromARGB(255, 86, 207, 225),
+    Color.fromARGB(255, 199, 125, 255),
+    Color.fromARGB(255, 255, 0, 84),
+  ];
 
   void _scrollListener() {
     setState(() {});
@@ -121,59 +132,60 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                   itemCount: widget.knowledgeBase.defaultQuestions.length,
                   controller: controller,
                   itemBuilder: (context, index) {
-                    final itemOffset = itemSize * index;
-                    final difference = controller.offset - itemOffset;
-                    final percent = 1 - (difference / (itemSize / 2));
-                    double opacity = percent;
-                    if (opacity > 1.0) opacity = 1.0;
-                    if (opacity < 0.0) opacity = 0.0;
-                    double scale = percent;
-                    if (scale > 1.0) scale = 1.0;
-
-                    return Opacity(
-                      opacity: opacity,
-                      child: Transform(
-                        alignment: Alignment.center,
-                        transform: Matrix4.identity()..scale(scale, 1.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _selectedDefaultQuestionIndex = index;
-                            });
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.all(8.0),
-                            height: itemSize,
-                            decoration: BoxDecoration(
-                              color: _selectedDefaultQuestionIndex == index
-                                  ? Color.fromARGB(255, 106, 129, 146)
-                                  : Color.fromARGB(125, 106, 129, 146),
-                              borderRadius: BorderRadius.circular(12.0),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.black12,
-                                  blurRadius: 1.0,
-                                  spreadRadius: 2,
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                widget.knowledgeBase.defaultQuestions[index]
-                                    .displayText,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'San Francisco',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                            ),
-                          ),
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          _selectedDefaultQuestionIndex = index;
+                        });
+                      },
+                      child: GFCard(
+                        boxFit: BoxFit.cover,
+                        // image: Image.asset('your asset image'),
+                        // title: GFListTile(
+                        //   avatar: GFAvatar(
+                        //     backgroundImage: AssetImage('your asset image'),
+                        //   ),
+                        //   title: Text('Card Title'),
+                        //   subTitle: Text('Card Sub Title'),
+                        // ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
                         ),
+                        margin: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(20.0),
+                        color: widget.color,
+                        // getCardColor(index),
+                        // const LinearGradient(
+                        //   begin: Alignment.topLeft,
+                        //   end: Alignment.bottomRight,
+                        //   colors: [
+                        //     Color.fromARGB(255, 131, 245, 229),
+                        //     Color.fromARGB(255, 181, 171, 209),
+                        //     Color.fromARGB(255, 231, 97, 109),
+                        //   ],
+                        // ),
+                        content: Text(
+                          widget.knowledgeBase.defaultQuestions[index]
+                              .displayText,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'San Francisco',
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        // buttonBar: GFButtonBar(
+                        //   children: <Widget>[
+                        //     GFButton(
+                        //       onPressed: () {},
+                        //       text: 'Buy',
+                        //     ),
+                        //     GFButton(
+                        //       onPressed: () {},
+                        //       text: 'Cancel',
+                        //     ),
+                        //   ],
+                        // ),
                       ),
                     );
                   },
@@ -227,6 +239,8 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
               MaterialPageRoute(
                 builder: (context) => KnowledgeBaseDetailPage(
                   knowledgeBase: widget.knowledgeBase,
+
+                  // getCardColor(_selectedDefaultQuestionIndex),
                 ),
               ),
             );
@@ -244,6 +258,12 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
         },
       ),
     );
+  }
+
+  // new method
+
+  Color getCardColor(int index) {
+    return cardColors[index % cardColors.length];
   }
 
   List<Widget> _buildDefaultQuestionChips() {

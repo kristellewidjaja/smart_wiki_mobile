@@ -1,5 +1,6 @@
 import 'package:smart_wiki_ui/default_questions_page.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_wiki_ui/models/hex_color.dart';
 // import 'package:smart_wiki_ui/data/dummy_data.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 
@@ -29,6 +30,7 @@ class _KnowledgeBaseItemState extends State<KnowledgeBaseItem> {
               // change here
               return DefaultQuestionsPage(
                 knowledgeBase: widget.knowledgeBase,
+                color: Colors.white,
               );
 
               // return KnowledgeBaseDetailPage(

@@ -1,10 +1,11 @@
 import 'dart:io';
-
+import 'package:smart_wiki_ui/models/gradient_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_wiki_ui/components/knowledge_base_item.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:smart_wiki_ui/components/knowledge_base_grid_item.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -14,6 +15,21 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List<KnowledgeBase> _filteredKnowledgeBaseList = [];
   List<KnowledgeBase> _knowledgeBaseList = [];
+  final List<GradientColors> gradientColors = [
+    GradientColors(startColor: '#FA7D82', endColor: '#FFB295'),
+    GradientColors(
+      startColor: '#738AE6',
+      endColor: '#5C5EDD',
+    ),
+    GradientColors(
+      startColor: '#FE95B6',
+      endColor: '#FF5287',
+    ),
+    GradientColors(
+      startColor: '#6F72CA',
+      endColor: '#1E1466',
+    )
+  ];
 
   @override
   void initState() {
@@ -128,17 +144,31 @@ class _MainPageState extends State<MainPage> {
               backgroundColor: Color.fromARGB(255, 100, 121, 137),
               strokeWidth: 3.0,
               onRefresh: _getKnowledgeBaseList,
-              child: ListView.builder(
+              child: GridView.builder(
                 itemCount: _filteredKnowledgeBaseList.length,
-                shrinkWrap: true,
-                padding: const EdgeInsets.only(top: 16),
-                physics: const AlwaysScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.0,
+                ),
                 itemBuilder: (context, index) {
-                  return KnowledgeBaseItem(
+                  return KnowledgeBaseGridItem(
                     knowledgeBase: _filteredKnowledgeBaseList[index],
+                    gradientColors:
+                        gradientColors[index % gradientColors.length],
                   );
                 },
               ),
+              // ListView.builder(
+              //   itemCount: _filteredKnowledgeBaseList.length,
+              //   shrinkWrap: true,
+              //   padding: const EdgeInsets.only(top: 16),
+              //   physics: const AlwaysScrollableScrollPhysics(),
+              //   itemBuilder: (context, index) {
+              //     return KnowledgeBaseItem(
+              //       knowledgeBase: _filteredKnowledgeBaseList[index],
+              //     );
+              //   },
+              // ),
             ),
           ),
         ],
