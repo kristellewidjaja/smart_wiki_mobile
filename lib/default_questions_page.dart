@@ -133,9 +133,11 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                        setState(() {
-                          _selectedDefaultQuestionIndex = index;
-                        });
+                        setState(
+                          () {
+                            _selectedDefaultQuestionIndex = index;
+                          },
+                        );
                       },
                       child: Stack(
                         children: [
@@ -152,15 +154,29 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                                   offset: const Offset(0, 3),
                                 ),
                               ],
-                              gradient: LinearGradient(
-                                colors: [
-                                  HexColor(widget.gradientColors.startColor),
-                                  HexColor(widget.gradientColors.endColor),
-                                ],
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                tileMode: TileMode.clamp,
-                              ),
+                              gradient: _selectedDefaultQuestionIndex == index
+                                  ? LinearGradient(
+                                      colors: [
+                                        HexColor(
+                                            widget.gradientColors.startColor),
+                                        HexColor(
+                                            widget.gradientColors.startColor),
+                                      ],
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                      tileMode: TileMode.clamp,
+                                    )
+                                  : LinearGradient(
+                                      colors: [
+                                        HexColor(
+                                            widget.gradientColors.startColor),
+                                        HexColor(
+                                            widget.gradientColors.endColor),
+                                      ],
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                      tileMode: TileMode.clamp,
+                                    ),
                               // color: widget.color,
                             ),
                             child: Center(
