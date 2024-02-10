@@ -54,7 +54,7 @@ class SplashScreen extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 235, 244, 245),
       nextScreen: MainPage(),
       splashIconSize: 250,
       duration: 2000,

@@ -83,10 +83,8 @@ class _MainPageState extends State<MainPage> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 34, 30, 36),
-                Color.fromARGB(255, 83, 97, 108),
-                Color.fromARGB(255, 100, 121, 137),
-                Color.fromARGB(255, 106, 129, 146),
+                Color.fromARGB(255, 235, 244, 215),
+                Color.fromARGB(255, 181, 198, 224)
               ],
             ),
           ),
@@ -94,11 +92,11 @@ class _MainPageState extends State<MainPage> {
         title: const Text(
           'FinGuru',
           style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontFamily: 'San Francisco',
               fontWeight: FontWeight.bold),
         ),
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

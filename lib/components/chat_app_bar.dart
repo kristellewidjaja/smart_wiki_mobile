@@ -21,10 +21,8 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color.fromARGB(255, 34, 30, 36),
-              Color.fromARGB(255, 83, 97, 108),
-              Color.fromARGB(255, 100, 121, 137),
-              Color.fromARGB(255, 106, 129, 146),
+              Color.fromARGB(255, 235, 244, 215),
+              Color.fromARGB(255, 181, 198, 224)
             ],
           ),
         ),
@@ -42,15 +40,15 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
               icon: const Icon(
                 Icons.arrow_back_ios,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             const SizedBox(
               width: 2,
             ),
             CircleAvatar(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.white,
+              backgroundColor: Colors.transparent,
+              foregroundColor: Colors.transparent,
               backgroundImage:
                   AssetImage(avatarImagePath + knowledgeBase.imageUrl),
               maxRadius: 20,
@@ -67,7 +65,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
                     knowledgeBase.subject,
                     style: const TextStyle(
                       fontSize: 15.0,
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'San Francisco',
                     ),
