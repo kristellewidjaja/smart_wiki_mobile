@@ -1,7 +1,6 @@
 import 'package:smart_wiki_ui/default_questions_page.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_wiki_ui/models/gradient_colors.dart';
-// import 'package:smart_wiki_ui/data/dummy_data.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 import 'package:smart_wiki_ui/models/hex_color.dart';
 
@@ -14,21 +13,6 @@ class KnowledgeBaseGridItem extends StatefulWidget {
 
   final KnowledgeBase knowledgeBase;
   final GradientColors gradientColors;
-  // final List<GradientColors> gradientColors = [
-  //   GradientColors(startColor: '#FA7D82', endColor: '#FFB295'),
-  //   GradientColors(
-  //     startColor: '#738AE6',
-  //     endColor: '#5C5EDD',
-  //   ),
-  //   GradientColors(
-  //     startColor: '#FE95B6',
-  //     endColor: '#FF5287',
-  //   ),
-  //   GradientColors(
-  //     startColor: '#6F72CA',
-  //     endColor: '#1E1466',
-  //   )
-  // ];
 
   @override
   _KnowledgeBaseItemState createState() => _KnowledgeBaseItemState();
@@ -48,12 +32,8 @@ class _KnowledgeBaseItemState extends State<KnowledgeBaseGridItem> {
               // change here
               return DefaultQuestionsPage(
                 knowledgeBase: widget.knowledgeBase,
-                color: HexColor(widget.gradientColors.getEndColor),
+                gradientColors: widget.gradientColors,
               );
-
-              // return KnowledgeBaseDetailPage(
-              //   knowledgeBase: widget.knowledgeBase,
-              // );
             },
           ),
         );
@@ -66,6 +46,7 @@ class _KnowledgeBaseItemState extends State<KnowledgeBaseGridItem> {
               padding:
                   const EdgeInsets.only(top: 32, left: 8, right: 8, bottom: 16),
               child: Container(
+                height: 154,
                 decoration: BoxDecoration(
                   boxShadow: <BoxShadow>[
                     BoxShadow(
@@ -91,7 +72,7 @@ class _KnowledgeBaseItemState extends State<KnowledgeBaseGridItem> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
-                      top: 54, left: 16, right: 16, bottom: 8),
+                      top: 70, left: 16, right: 16, bottom: 8),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -115,7 +96,7 @@ class _KnowledgeBaseItemState extends State<KnowledgeBaseGridItem> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                'test',
+                                '',
                                 style: TextStyle(
                                   fontFamily: 'San Francisco',
                                   fontWeight: FontWeight.w500,
@@ -159,46 +140,6 @@ class _KnowledgeBaseItemState extends State<KnowledgeBaseGridItem> {
           ],
         ),
       ),
-      // Container(
-      //   padding:
-      //       const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
-      //   child: Row(
-      //     children: <Widget>[
-      //       Expanded(
-      //         child: Row(
-      //           children: <Widget>[
-      //             CircleAvatar(
-      //               backgroundImage: AssetImage(
-      //                   avatarImagePath + widget.knowledgeBase.imageUrl),
-      //               maxRadius: 30,
-      //             ),
-      //             const SizedBox(
-      //               width: 16,
-      //             ),
-      //             Expanded(
-      //               child: Container(
-      //                 color: Colors.transparent,
-      //                 child: Column(
-      //                   crossAxisAlignment: CrossAxisAlignment.start,
-      //                   children: <Widget>[
-      //                     Text(
-      //                       widget.knowledgeBase.subject,
-      //                       style: const TextStyle(
-      //                           fontSize: 16, fontWeight: FontWeight.bold),
-      //                     ),
-      //                     const SizedBox(
-      //                       height: 6,
-      //                     ),
-      //                   ],
-      //                 ),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

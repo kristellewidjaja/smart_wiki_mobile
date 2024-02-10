@@ -1,16 +1,15 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:smart_wiki_ui/knowledge_base_detail_page.dart';
+import 'package:smart_wiki_ui/models/gradient_colors.dart';
+import 'package:smart_wiki_ui/models/hex_color.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
-import 'package:getwidget/getwidget.dart';
 
 class DefaultQuestionsPage extends StatefulWidget {
   const DefaultQuestionsPage(
-      {super.key, required this.knowledgeBase, required this.color});
+      {super.key, required this.knowledgeBase, required this.gradientColors});
 
   final KnowledgeBase knowledgeBase;
-  final Color color;
+  final GradientColors gradientColors;
 
   @override
   State<DefaultQuestionsPage> createState() => _DefaultQuestionsPageState();
@@ -138,84 +137,70 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
                           _selectedDefaultQuestionIndex = index;
                         });
                       },
-                      child: GFCard(
-                        boxFit: BoxFit.cover,
-                        // image: Image.asset('your asset image'),
-                        // title: GFListTile(
-                        //   avatar: GFAvatar(
-                        //     backgroundImage: AssetImage('your asset image'),
-                        //   ),
-                        //   title: Text('Card Title'),
-                        //   subTitle: Text('Card Sub Title'),
-                        // ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        margin: EdgeInsets.all(10.0),
-                        padding: EdgeInsets.all(20.0),
-                        color: widget.color,
-                        // getCardColor(index),
-                        // const LinearGradient(
-                        //   begin: Alignment.topLeft,
-                        //   end: Alignment.bottomRight,
-                        //   colors: [
-                        //     Color.fromARGB(255, 131, 245, 229),
-                        //     Color.fromARGB(255, 181, 171, 209),
-                        //     Color.fromARGB(255, 231, 97, 109),
-                        //   ],
-                        // ),
-                        content: Text(
-                          widget.knowledgeBase.defaultQuestions[index]
-                              .displayText,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'San Francisco',
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        // buttonBar: GFButtonBar(
-                        //   children: <Widget>[
-                        //     GFButton(
-                        //       onPressed: () {},
-                        //       text: 'Buy',
-                        //     ),
-                        //     GFButton(
-                        //       onPressed: () {},
-                        //       text: 'Cancel',
-                        //     ),
-                        //   ],
-                        // ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.all(10.0),
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 5,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 3),
+                                ),
+                              ],
+                              gradient: LinearGradient(
+                                colors: [
+                                  HexColor(widget.gradientColors.startColor),
+                                  HexColor(widget.gradientColors.endColor),
+                                ],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                tileMode: TileMode.clamp,
+                              ),
+                              // color: widget.color,
+                            ),
+                            child: Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  textAlign: TextAlign.center,
+                                  widget.knowledgeBase.defaultQuestions[index]
+                                      .displayText,
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'San Francisco',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            top: 0,
+                            left: 270,
+                            child: Container(
+                              width: 300,
+                              height: 300,
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.1),
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },
                 ),
               ),
-              // Container(
-              //   height: 150,
-              //   decoration: BoxDecoration(
-              //     gradient: LinearGradient(
-              //       begin: Alignment.topCenter,
-              //       end: Alignment.bottomCenter,
-              //       colors: [Colors.white, Colors.transparent],
-              //     ),
-              //   ),
-              // ),
             ],
-          )
-              // ListView(
-              //   children: _buildDefaultQuestionChips(),
-              // ),
-              ),
+          )),
         ],
       ),
-
-      // Padding(
-      //   padding: const EdgeInsets.all(16.0),
-      //   child: ListView(
-      //     children: _buildDefaultQuestionChips(),
-      //   ),
-      // ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.black,
@@ -239,8 +224,6 @@ class _DefaultQuestionsPageState extends State<DefaultQuestionsPage> {
               MaterialPageRoute(
                 builder: (context) => KnowledgeBaseDetailPage(
                   knowledgeBase: widget.knowledgeBase,
-
-                  // getCardColor(_selectedDefaultQuestionIndex),
                 ),
               ),
             );

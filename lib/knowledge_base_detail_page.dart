@@ -61,7 +61,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
     super.initState();
 
     _chatbotUser = types.User(
-      firstName: 'Smart Assistant',
+      firstName: 'Financial Assistant',
       imageUrl: avatarImagePath + widget.knowledgeBase.imageUrl,
       id: widget.knowledgeBase.id.toString(),
     );
@@ -71,7 +71,7 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
       typingMode: TypingIndicatorMode.both,
       typingUsers: [
         types.User(
-          firstName: 'Smart Assistant',
+          firstName: 'Financial Assistant',
           imageUrl: avatarImagePath + widget.knowledgeBase.imageUrl,
           id: widget.knowledgeBase.id.toString(),
         )

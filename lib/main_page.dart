@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:smart_wiki_ui/models/gradient_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_wiki_ui/components/knowledge_base_item.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -16,7 +15,10 @@ class _MainPageState extends State<MainPage> {
   List<KnowledgeBase> _filteredKnowledgeBaseList = [];
   List<KnowledgeBase> _knowledgeBaseList = [];
   final List<GradientColors> gradientColors = [
-    GradientColors(startColor: '#FA7D82', endColor: '#FFB295'),
+    GradientColors(
+      startColor: '#FA7D82',
+      endColor: '#FFB295',
+    ),
     GradientColors(
       startColor: '#738AE6',
       endColor: '#5C5EDD',
@@ -90,7 +92,7 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         title: const Text(
-          'Smart Wiki',
+          'FinGuru',
           style: TextStyle(
               color: Colors.white,
               fontFamily: 'San Francisco',
@@ -158,17 +160,6 @@ class _MainPageState extends State<MainPage> {
                   );
                 },
               ),
-              // ListView.builder(
-              //   itemCount: _filteredKnowledgeBaseList.length,
-              //   shrinkWrap: true,
-              //   padding: const EdgeInsets.only(top: 16),
-              //   physics: const AlwaysScrollableScrollPhysics(),
-              //   itemBuilder: (context, index) {
-              //     return KnowledgeBaseItem(
-              //       knowledgeBase: _filteredKnowledgeBaseList[index],
-              //     );
-              //   },
-              // ),
             ),
           ),
         ],
