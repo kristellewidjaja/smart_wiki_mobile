@@ -44,7 +44,7 @@ class SplashScreen extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              'Smart Wiki',
+              'FinGuru',
               style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'San Francisco',
