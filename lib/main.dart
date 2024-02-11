@@ -62,36 +62,6 @@ class SplashScreen extends StatelessWidget {
       pageTransitionType: PageTransitionType.rightToLeftWithFade,
       animationDuration: const Duration(seconds: 1),
     );
-    // AnimatedSplashScreen(
-    //   splash: Center(
-    //     child: Lottie.asset(
-    //       'assets/splash_screen_animation.json',
-    //       width: 400,
-    //       height: 4000,
-    //       fit: BoxFit.fill,
-    //     ),
-    //   ),
-
-    // Lottie.asset(
-    //   'assets/splash_screen_animation.json',
-    //   width: 200,
-    //   height: 200,
-    //   fit: BoxFit.fill,
-    // ),
-    // Text(
-    //   'Smart Wiki',
-    //   style: TextStyle(
-    //       color: Colors.black,
-    //       fontWeight: FontWeight.bold,
-    //       fontSize: 20.0),
-    // )
-
-    //   backgroundColor: Colors.white,
-    //   duration: 4000,
-    //   pageTransitionType: PageTransitionType.leftToRightWithFade,
-    //   splashTransition: SplashTransition.fadeTransition,
-    //   nextScreen: MainPage(),
-    // );
   }
 }
 
@@ -111,7 +81,7 @@ class SmartWikiApp extends StatelessWidget {
         ),
       ),
       // scaffold with text in center body
-      title: 'SmartWiki',
+      title: 'FinGuru',
       // theme: ThemeData(primarySwatch: Colors.deepPurple),
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),

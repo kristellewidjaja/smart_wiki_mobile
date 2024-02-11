@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:smart_wiki_ui/bio_page.dart';
 import 'package:smart_wiki_ui/models/gradient_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_wiki_ui/models/knowledge_base.dart';
@@ -76,8 +77,40 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // bottomNavigationBar: BottomAppBar(
+      //   color: Colors.grey,
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: <Widget>[
+      //       IconButton(
+      //         icon: const Icon(Icons.person),
+      //         onPressed: () {},
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     _getKnowledgeBaseList();
+      //   },
+      //   child: const Icon(Icons.person),
+      //   backgroundColor: Color.fromARGB(255, 100, 121, 137),
+      // ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            padding: const EdgeInsets.only(right: 30),
+            iconSize: 30,
+            tooltip: 'See women in AI',
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => BioPage()));
+            },
+            icon: const Icon(Icons.person),
+          ),
+        ],
         elevation: 0,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
