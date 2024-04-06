@@ -16,22 +16,26 @@ class _MainPageState extends State<MainPage> {
   List<KnowledgeBase> _filteredKnowledgeBaseList = [];
   List<KnowledgeBase> _knowledgeBaseList = [];
   final List<GradientColors> gradientColors = [
+    // dark blue
     GradientColors(
-      startColor: '#FA7D82',
-      endColor: '#FFB295',
+      startColor: '#6F72CA',
+      endColor: '#1E1466',
     ),
-    GradientColors(
-      startColor: '#738AE6',
-      endColor: '#5C5EDD',
-    ),
+    // pink
     GradientColors(
       startColor: '#FE95B6',
       endColor: '#FF5287',
     ),
+    // light blue
     GradientColors(
-      startColor: '#6F72CA',
-      endColor: '#1E1466',
-    )
+      startColor: '#738AE6',
+      endColor: '#5C5EDD',
+    ),
+    // peach
+    GradientColors(
+      startColor: '#FA7D82',
+      endColor: '#FFB295',
+    ),
   ];
 
   @override
@@ -43,8 +47,8 @@ class _MainPageState extends State<MainPage> {
 
   Future _getKnowledgeBaseList() async {
     final url = Uri.http(
-      // '10.0.0.20:5001',
-      'localhost:5001',
+      '10.0.0.16:5001',
+      // 'localhost:5001',
       '/knowledgebases',
     );
 

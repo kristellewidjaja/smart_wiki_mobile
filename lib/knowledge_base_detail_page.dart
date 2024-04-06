@@ -105,8 +105,8 @@ class _KnowledgeBaseDetailPageState extends State<KnowledgeBaseDetailPage> {
     );
 
     final url = Uri.http(
-      // '10.0.0.20:5001',
-      'localhost:5001',
+      '10.0.0.16:5001',
+      // 'localhost:5001',
       '/knowledgebases/chat',
     );
 
