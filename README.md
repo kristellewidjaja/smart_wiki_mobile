@@ -1,4 +1,4 @@
-# smart_wiki_mobile
+# Smart Wiki Mobile (rebranded to FinGuru) 
 
 A new Flutter project.
 
